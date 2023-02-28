@@ -23,7 +23,7 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <div style={{ displa: "inline-block" }}>
+        <div style={{ display: "inline-block" }}>
           <Link href={"/"}>Home</Link>
           <Link href={"/dashboard"} style={{ marginLeft: "2rem" }}>
             Dashboard

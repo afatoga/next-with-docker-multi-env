@@ -26,7 +26,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Next.js on Docker!</h1>
 
-        <div style={{ displa: "inline-block", marginTop: "2rem" }}>
+        <div style={{ display: "inline-block", marginTop: "2rem" }}>
           <Link href={"/"}>Home</Link>
           <Link href={"/dashboard"} style={{ marginLeft: "2rem" }}>
             Dashboard
