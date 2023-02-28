@@ -31,7 +31,7 @@ export default function Batch({ batch }) {
         <table>
           <tbody>
             {batch.tracks.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.title}</td>
               </tr>
             ))}
