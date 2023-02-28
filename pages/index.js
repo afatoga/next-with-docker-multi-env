@@ -28,6 +28,12 @@ export default function Home() {
           <Link href={"/dashboard"} style={{ marginLeft: "2rem" }}>
             Dashboard
           </Link>
+          <Link href={"/batch"} style={{ marginLeft: "2rem" }}>
+            Batch
+          </Link>
+          <Link href={"/remote"} style={{ marginLeft: "2rem" }}>
+            Remote fetch
+          </Link>
         </div>
 
         <div className={styles.grid}>

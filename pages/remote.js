@@ -1,35 +1,20 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import { getProductData } from "./api/product";
 
-export default function Dashboard() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    if (!data.length) {
-      fetch("/api/list")
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-        });
-    }
-  }, [data, setData]);
-
+export default function Batch({ product }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Single Batch</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          DASHBOARD: fetch <br />
-          in "useEffect"
-        </h1>
+        <h1 className={styles.title}>DUMMYJSON.COM</h1>
 
-        <div style={{ display: "inline-block", marginTop: "2rem" }}>
+        <div style={{ display: "inline-block", margin: "2rem 0" }}>
           <Link href={"/"}>Home</Link>
           <Link href={"/dashboard"} style={{ marginLeft: "2rem" }}>
             Dashboard
@@ -42,18 +27,8 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <table style={{ marginTop: "2rem" }}>
-          <tbody>
-            {data.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <h1>{product.title}</h1>
+        <p>{product.description}</p>
       </main>
 
       <footer className={styles.footer}>
@@ -68,4 +43,13 @@ export default function Dashboard() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const product = await getProductData();
+  return {
+    props: {
+      product,
+    }, // will be passed to the page component as props
+  };
 }
